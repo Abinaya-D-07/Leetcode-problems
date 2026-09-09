@@ -1,0 +1,19 @@
+int* findDuplicates(int* nums, int numsSize, int* returnSize) {
+    int hash[numsSize+1];
+    for(int i=0; i<=numsSize; i++)
+    hash[i]=0;
+
+    for(int i=0; i<numsSize; i++){
+        hash[nums[i]]++;
+    }
+
+    int* res=malloc(numsSize*sizeof(int));
+    int ind=0;
+    for(int i=1; i<=numsSize; i++){
+        if(hash[i]>1){
+            res[ind++]=i;
+        }
+    }
+    *returnSize=ind;
+    return res;
+}
