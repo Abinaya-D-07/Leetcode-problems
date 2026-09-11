@@ -1,0 +1,25 @@
+
+int maxArea(int height[], int n)
+{
+    int l=0,r=n-1,area,max_area=0,w,h;
+    while(l<r){
+        
+       if(height[l]<height[r])
+       h=height[l];
+       else
+       h=height[r];
+
+       w=r-l;
+       area=h*w;
+
+       if(area>max_area)
+       max_area=area;
+
+       if(height[l]>height[r])
+       r--;
+       else
+       l++;
+       
+    }
+    return max_area;
+}
