@@ -1,0 +1,33 @@
+void rev(int*nums,int start,int end){
+    int l=start,r=end;
+    while(l<r){
+        int tmp=nums[l];
+        nums[l]=nums[r];
+        nums[r]=tmp;
+        l++;
+        r--;
+    }
+}
+void nextPermutation(int* nums, int numsSize) {
+    int idx=-1,temp;
+    for(int i=numsSize-2; i>=0; i--){
+        if(nums[i+1]>nums[i]){
+            idx=i;
+            break;
+        }
+    }
+        if(idx==-1){
+        rev(nums,0,numsSize-1);
+        return;
+        }
+    
+     for(int i=numsSize-1; i>=idx; i--){
+        if(nums[i]>nums[idx]){
+            temp=nums[i];
+            nums[i]=nums[idx];
+            nums[idx]=temp;
+            break;
+        }
+     }
+      rev(nums,idx+1,numsSize-1);
+}
