@@ -1,0 +1,11 @@
+bool containsNearbyDuplicate(int* nums, int numsSize, int k) {
+     int i=0;
+        for(int j=i+1; j<numsSize && j<=i+k; j++){
+            if(nums[i]==nums[j])
+            return true;
+        }
+        i++;
+    
+    return false;
+
+}
