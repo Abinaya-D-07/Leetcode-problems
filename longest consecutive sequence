@@ -1,0 +1,24 @@
+int compare(const void* a,const void* b){
+    return (*(int*)a-*(int*)b);
+}
+int longestConsecutive(int* nums, int numsSize) {
+    if(numsSize==0)
+    return 0;
+    qsort(nums,numsSize,sizeof(int),compare);
+    int curr=1,max=1;
+    for(int i=1; i<numsSize; i++){
+        if(nums[i]-nums[i-1]==1 ){    //if nums[i]==nums[i-1]+1
+         curr++;
+        }
+
+        else if(nums[i]==nums[i-1])
+        continue;
+
+        else
+         curr=1;
+        
+         if(curr>max)
+         max=curr;
+    }
+    return max;
+}
