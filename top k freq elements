@@ -1,0 +1,35 @@
+int* topKFrequent(int* nums, int numsSize, int k, int* returnSize) {
+    int max=nums[0];
+    int min=nums[0];
+    for(int i=0; i<numsSize; i++) {
+        if(nums[i]<min) {
+            min=nums[i];
+        }
+        if(nums[i]>max) {
+            max=nums[i];
+        }
+    }
+    int s=max-min+1;
+    int hash[s];
+    for(int i=0; i<s; i++) {
+        hash[i]=0;
+    }
+    for(int i=0; i<numsSize; i++) {
+        hash[nums[i]-min]++;
+    }
+    int *res=malloc(k*sizeof(int));
+    for(int i=0; i<k; i++) {
+        int maxfreq=-1;
+        int ind=-1;
+        for(int j=0; j<s; j++) {
+            if(hash[j]>maxfreq) {
+                maxfreq=hash[j];
+                ind=j;
+            }
+        }
+        res[i]=ind+min;
+        hash[ind]=-1;
+    }
+    *returnSize=k;
+    return res;
+}
