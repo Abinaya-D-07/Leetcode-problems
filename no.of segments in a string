@@ -1,0 +1,9 @@
+int countSegments(char* s) {
+    char* token=strtok(s," ");
+    int count=0;
+    while(token!=NULL){
+        count++;
+        token=strtok(NULL," ");
+    }
+    return count;
+}
