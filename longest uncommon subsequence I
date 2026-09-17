@@ -1,0 +1,7 @@
+int findLUSlength(char* a, char* b) {
+    if(strcmp(a,b)==0) return -1;
+    int n=strlen(a);
+    int m=strlen(b);
+    if(n>m) return n;
+    else return m;
+}
