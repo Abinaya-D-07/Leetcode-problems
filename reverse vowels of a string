@@ -1,0 +1,19 @@
+bool vowel(char ch){
+    ch=tolower(ch);
+    return (ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u');
+}
+char* reverseVowels(char* s) {
+    int l=0,r=strlen(s)-1;
+    while(l<r){
+        if(!vowel(s[l])) l++;
+        else if(!vowel(s[r])) r--;
+        else{
+            int t=s[l];
+            s[l]=s[r];
+            s[r]=t;
+            l++;
+            r--;
+        }
+    }
+    return s;
+}
