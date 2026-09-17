@@ -1,0 +1,42 @@
+int compress(char* chars, int charsSize) {
+    
+    int count = 1; 
+    int ind = 0; 
+    
+    for (int i = 1; i < charsSize; i++) { 
+        if (chars[i] == chars[i-1]) { 
+            count++; 
+        } else { 
+            chars[ind++] = chars[i-1]; 
+            if (count > 1) {
+                int x = count; 
+                int dig[10]; 
+                int k = 0; 
+                while (x > 0) { 
+                    dig[k++] = x % 10; 
+                    x = x / 10; 
+                } 
+                while (k > 0) { 
+                    chars[ind++] = dig[--k] + '0'; 
+                } 
+            } 
+            count = 1; 
+        } 
+    } 
+    
+    chars[ind++] = chars[charsSize - 1]; 
+    if (count > 1) { 
+        int x = count; 
+        int dig[10]; 
+        int k = 0; 
+        while (x > 0) { 
+            dig[k++] = x % 10; 
+            x = x / 10; 
+        } 
+        while (k > 0) { 
+            chars[ind++] = dig[--k] + '0'; 
+        } 
+    } 
+    
+    return ind; 
+}
