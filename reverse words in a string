@@ -1,0 +1,17 @@
+
+char* reverseWords(char* s) {
+    char* words[10000];
+    char *token=strtok(s," ");
+    int ind=0;
+    while(token!=NULL){
+        words[ind++]=token;
+        token=strtok(NULL," ");
+    }
+    char* res=malloc(10000);
+    res[0]='\0';
+    for(int i=ind-1; i>=0; i--){
+        strcat(res,words[i]);
+        if(i!=0) strcat(res," ");
+    }
+    return res; 
+}
